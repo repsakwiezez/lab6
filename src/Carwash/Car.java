@@ -1,4 +1,4 @@
-package Carwash;
+package carwash;
 
 public class Car {
     

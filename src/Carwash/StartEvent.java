@@ -15,7 +15,7 @@ class StartEvent extends Event {
         s.setCurrentTime(this.getTime());
         CarwashState carWashState = (CarwashState) s;
 
-        double firstArrivalTime = carWashState.getArrivalRandom().next();
+        double firstArrivalTime = this.getTime() + carWashState.getArrivalRandom().next();
 
         Car firstCar = carWashState.getCarFactory().createCar(firstArrivalTime);
 

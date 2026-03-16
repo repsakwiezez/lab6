@@ -15,7 +15,7 @@ public CarwashView(CarwashState state, double fastLower, double fastUpper, doubl
         System.out.println("seed: " + seed);
         System.out.println("Max Queue size: " + state.getMaxQueueSize());
         System.out.println("----------------------------------------");
-        System.out.println("Time  Event   Id  Fast  Slow  IdleTime  QueueTime  QueueSize  Rejected");
+        System.out.println(" Time  Event   Id  Fast  Slow  IdleTime  QueueTime  QueueSize  Rejected");
     }
 
     @Override
@@ -28,14 +28,20 @@ public CarwashView(CarwashState state, double fastLower, double fastUpper, doubl
             System.out.println(timeStr + " Start");
         }
         else if (e instanceof StopEvent){
-            System.out.printf("%s Stop   -     -     -    %6.2f    %6.2f          %d         %d\n", 
+            System.out.printf("%s Stop    -     -     -    %6.2f    %6.2f          %d         %d\n", 
                 timeStr, state.getTotalIdleTime(), state.getTotalQueueTime(), 
                 state.getCarQueue().getSize(), state.getRejectedCars());
 
             System.out.println("---------------------------------");
-            System.out.printf("Total idle machine time: %.2f\n", state.getTotalIdleTime());
-            System.out.printf("Total queueing time: %.2f\n", state.getTotalQueueTime());
-            System.out.println("Rejected cars: " + state.getRejectedCars());
+            System.out.printf("%-25s %5.2f\n", "Total idle machine time:", state.getTotalIdleTime());
+            System.out.printf("%-25s %5.2f\n", "Total queueing time:", state.getTotalQueueTime());
+            double meanQueueTime = 0.0;
+            int enteredCars = state.getEnteredCars();
+            if (enteredCars > 0) {
+                meanQueueTime = state.getTotalQueueTime() / enteredCars;
+            }
+            System.out.printf("%-25s %5.2f\n", "Mean queueing time:", meanQueueTime);
+            System.out.printf("%-25s %2d\n", "Rejected cars:", state.getRejectedCars());
         }
         else if (e instanceof ArriveEvent) {
             ArriveEvent arrive = (ArriveEvent) e;

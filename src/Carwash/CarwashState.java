@@ -14,6 +14,7 @@ public class CarwashState extends State {
     private double totalQueueTime;
 
     private int rejectedCars;
+    private int enteredCars;
     private final CarQueue carQueue;
     private final CarFactory carFactory;
 
@@ -30,6 +31,7 @@ public class CarwashState extends State {
         this.totalIdleTime = 0.0;
         this.totalQueueTime = 0.0;
         this.rejectedCars = 0;
+        this.enteredCars = 0;
 
         this.carQueue = new CarQueue();
         this.carFactory = new CarFactory();
@@ -108,6 +110,14 @@ public class CarwashState extends State {
         return this.rejectedCars;
     }
 
+    public void addEnteredCar() {
+        this.enteredCars++;
+    }
+
+    public int getEnteredCars() {
+        return this.enteredCars;
+    }
+
     public void addIdleTime(double time) {
         this.totalIdleTime += time;
     }
@@ -122,5 +132,9 @@ public class CarwashState extends State {
 
     public double getTotalQueueTime() {
         return this.totalQueueTime;
+    }
+
+    public double getCurrentId() {
+        return this.carFactory.getCurrentId();
     }
 }

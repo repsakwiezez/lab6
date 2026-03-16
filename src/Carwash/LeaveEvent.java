@@ -20,6 +20,8 @@ class LeaveEvent extends Event {
         s.setCurrentTime(this.getTime());
         CarwashState state = (CarwashState) s;
 
+        s.notifyObservers(this);
+
         if (!state.getCarQueue().isEmpty()){
             Car nextCar = state.getCarQueue().dequeue();
 
@@ -38,7 +40,6 @@ class LeaveEvent extends Event {
                 state.freeSlowWash();
             }
         }
-        s.notifyObservers(this);
     }
 
     Car getCar() {

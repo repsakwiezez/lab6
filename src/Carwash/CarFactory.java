@@ -8,4 +8,8 @@ class CarFactory {
         currentId++;
         return newCar;
     }
+
+    double getCurrentId() {
+        return this.currentId;
+    }
 }

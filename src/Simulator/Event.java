@@ -3,6 +3,13 @@ public abstract class Event implements Comparable<Event>{
     
     private double eventTime;
 
+    public Event(double time) {
+        if (time < 0) {
+            throw new IllegalArgumentException("Event time cannot be negative.");
+        }
+        this.eventTime = time;
+    }
+
     public double getTime() {
         return eventTime;
     }
@@ -11,7 +18,7 @@ public abstract class Event implements Comparable<Event>{
         return eventTime;
     }
 
-    public abstract void excecute(State s, EventQueue q);
+    public abstract void execute(State s, EventQueue q);
 
     @Override
     public int compareTo(Event o) {

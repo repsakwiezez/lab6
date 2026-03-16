@@ -21,7 +21,7 @@ public class CarwashState extends State {
     private final UniformRandomStream slowRandom;
     private final ExponentialRandomStream arrivalRandom;
 
-    public CarwashState(int fastWash, int slowWash, int maxQueueSize; UniformRandomStream fastRandom, UniformRandomStream slowrandom, ExponentialRandomStream arrivalRandom) {
+    public CarwashState(int fastWash, int slowWash, int maxQueueSize, UniformRandomStream fastRandom, UniformRandomStream slowRandom, ExponentialRandomStream arrivalRandom) {
 
         this.fastWash = fastWash;
         this.slowWash = slowWash;

@@ -21,12 +21,22 @@ import simulator.State;
         Car nextCar = state.getCarFactory().createCar(nextArrivalTime);
         q.insert(new ArriveEvent(nextArrivalTime, nextCar));
 
-        if(state.getAvailibleFastWash() > 0){
+        if(state.getAvailableFastWash() > 0){
             state.occupyFastWash();
             double leaveTime = this.getTime() + state.getFastRandom().next();
             q.insert(new LeaveEvent(leaveTime, this.car, true));
+        } else if(state.getAvailableSlowWash() > 0){
+            state.occupySlowWash();
+            double leaveTime = this.getTime() + state.getSlowRandom().next();
+            q.insert(new LeaveEvent(leaveTime, this.car, false));
+        } else {
+            state.addRejectedCar();
         }
 
+        s.notifyObservers(this);
     }
     
+    public Car getCar() {
+        return this.car;
+    }
 }

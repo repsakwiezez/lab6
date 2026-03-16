@@ -13,8 +13,13 @@ class StartEvent extends Event {
     @Override
     public void execute(State s, EventQueue q) {
         s.setCurrentTime(this.getTime());
-
         CarwashState carWashState = (CarwashState) s;
+
+        double firtArrivalTime = carWashState.getArrivalRandom().next();
+        
+        Car firstCar = carWashState.getCarFactory().createCar(firtArrivalTime);
+
+        q.insert(new ArriveEvent(firtArrivalTime, firstCar));
 
         s.notifyObservers(this);
     }

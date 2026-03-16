@@ -3,12 +3,10 @@ package simulator;
 public class Simulator {
     private State state;
     private EventQueue queue;
-    private View view;
 
-    public Simulator(State state, EventQueue queue, View view) {
+    public Simulator(State state, EventQueue queue) {
         this.state = state;
         this.queue = queue;
-        this.view = view;
     }
 
     public void run() {

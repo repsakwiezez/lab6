@@ -27,7 +27,7 @@ public class Main {
         queue.insert(new StartEvent(0.0));
         queue.insert(new StopEvent(15.0));
 
-        Simulator simulator = new Simulator(state, queue, view);
+        Simulator simulator = new Simulator(state, queue);
         simulator.run();
     }
     

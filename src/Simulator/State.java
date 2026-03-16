@@ -42,9 +42,9 @@ public class State {
         }
     }
 
-    public void notifyViews() {
+    public void notifyViews(Event e) {
         for (View view : views) {
-            view.update(this);
+            view.update(this, e);
         }
     }
 }

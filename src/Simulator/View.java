@@ -1,7 +1,6 @@
 package simulator;
 
 public class View {
-    public void update(State state) {
-
+    public void update(State s, Event e) {
     }
 }

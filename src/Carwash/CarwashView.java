@@ -6,11 +6,14 @@ import simulator.Event;
 
 public class CarwashView extends View {
 
-public CarwashView(CarwashState state) {
-        System.out.println("Fast machines" + state.getAvailableFastWash());
-        System.out.println("Slow machines" + state.getAvailableSlowWash());
-
-        System.out.println("Queue size" + state.getMaxQueueSize());
+public CarwashView(CarwashState state, double fastLower, double fastUpper, double slowLower, double slowUpper, double lambda, long seed) {
+        System.out.println("Fast machines: " + state.getAvailableFastWash());
+        System.out.println("Slow machines: " + state.getAvailableSlowWash());
+        System.out.println("Fast distribution: (" + fastLower + ", " + fastUpper + ")");
+        System.out.println("Slow distribution: (" + slowLower + ", " + slowUpper + ")");
+        System.out.println("Exponential distribution with Lambda: " + lambda);
+        System.out.println("seed: " + seed);
+        System.out.println("Max Queue size: " + state.getMaxQueueSize());
         System.out.println("----------------------------------------");
         System.out.println("Time  Event   Id  Fast  Slow  IdleTime  QueueTime  QueueSize  Rejected");
     }

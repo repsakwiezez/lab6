@@ -7,14 +7,20 @@ public class Main {
     public static void main(String[] args) {
 
         long seed = 1234;
-        ExponentialRandomStream arrivalRandom = new ExponentialRandomStream( 2.0, seed);
-        UniformRandomStream fastRandom = new UniformRandomStream(2.8, 4.6, seed);
-        UniformRandomStream slowRandom = new UniformRandomStream(3.5, 6.7, seed);
+        double lambda = 2.0;
+        double fastLower = 2.8;
+        double fastUpper = 4.6;
+        double slowLower = 3.5;
+        double slowUpper = 6.7;
 
-        CarwashState state = new CarwashState(2, 3, 5, fastRandom, slowRandom, arrivalRandom);
+        ExponentialRandomStream arrivalRandom = new ExponentialRandomStream( lambda, seed);
+        UniformRandomStream fastRandom = new UniformRandomStream(fastLower, fastUpper, seed);
+        UniformRandomStream slowRandom = new UniformRandomStream(slowLower, slowUpper, seed);
+
+        CarwashState state = new CarwashState(2, 2, 5, fastRandom, slowRandom, arrivalRandom);
 
         EventQueue queue = new EventQueue();
-        CarwashView view = new CarwashView(state);
+        CarwashView view = new CarwashView(state, fastLower, fastUpper, slowLower, slowUpper, lambda, seed);
 
         state.addView(view);
 

@@ -15,11 +15,11 @@ class StartEvent extends Event {
         s.setCurrentTime(this.getTime());
         CarwashState carWashState = (CarwashState) s;
 
-        double firtArrivalTime = carWashState.getArrivalRandom().next();
-        
-        Car firstCar = carWashState.getCarFactory().createCar(firtArrivalTime);
+        double firstArrivalTime = carWashState.getArrivalRandom().next();
 
-        q.insert(new ArriveEvent(firtArrivalTime, firstCar));
+        Car firstCar = carWashState.getCarFactory().createCar(firstArrivalTime);
+
+        q.insert(new ArriveEvent(firstArrivalTime, firstCar));
 
         s.notifyObservers(this);
     }

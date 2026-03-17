@@ -28,7 +28,7 @@ public CarwashView(CarwashState state, double fastLower, double fastUpper, doubl
             System.out.println(timeStr + " Start");
         }
         else if (e instanceof StopEvent){
-            System.out.printf("%s Stop          0     0    %6.2f    %6.2f          %d         %d\n", 
+            System.out.printf("%s Stop          0     0    %6.2f   %6.2f          %d         %d\n", 
                 timeStr, state.getTotalIdleTime(), state.getTotalQueueTime(), 
                 state.getCarQueue().getSize(), state.getRejectedCars());
 
@@ -45,13 +45,13 @@ public CarwashView(CarwashState state, double fastLower, double fastUpper, doubl
         }
         else if (e instanceof ArriveEvent) {
             ArriveEvent arrive = (ArriveEvent) e;
-            System.out.printf("%s Arrive  %2d    %d     %d    %6.2f    %6.2f          %d         %d\n", 
+            System.out.printf("%s Arrive  %2d    %d     %d    %6.2f   %6.2f          %d         %d\n", 
                 timeStr, arrive.getCar().getId(), state.getAvailableFastWash(), state.getAvailableSlowWash(),
                 state.getTotalIdleTime(), state.getTotalQueueTime(), state.getCarQueue().getSize(), state.getRejectedCars());
         } 
         else if (e instanceof LeaveEvent) {
             LeaveEvent leave = (LeaveEvent) e;
-            System.out.printf("%s Leave   %2d    %d     %d    %6.2f    %6.2f          %d         %d\n", 
+            System.out.printf("%s Leave   %2d    %d     %d    %6.2f   %6.2f          %d         %d\n", 
                 timeStr, leave.getCar().getId(), state.getAvailableFastWash(), state.getAvailableSlowWash(),
                 state.getTotalIdleTime(), state.getTotalQueueTime(), state.getCarQueue().getSize(), state.getRejectedCars());
         }

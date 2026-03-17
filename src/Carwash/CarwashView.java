@@ -28,7 +28,7 @@ public CarwashView(CarwashState state, double fastLower, double fastUpper, doubl
             System.out.println(timeStr + " Start");
         }
         else if (e instanceof StopEvent){
-            System.out.printf("%s Stop    -     -     -    %6.2f    %6.2f          %d         %d\n", 
+            System.out.printf("%s Stop          0     0    %6.2f    %6.2f          %d         %d\n", 
                 timeStr, state.getTotalIdleTime(), state.getTotalQueueTime(), 
                 state.getCarQueue().getSize(), state.getRejectedCars());
 

@@ -28,14 +28,6 @@ public abstract class Event implements Comparable<Event>{
     }
 
     /**
-     * Returns the event time.
-     * @return the event time
-     */
-    public double getEventTime() {
-        return eventTime;
-    }
-
-    /**
      * Executes the event.
      * @param s the current state
      * @param q the event queue
@@ -49,6 +41,6 @@ public abstract class Event implements Comparable<Event>{
      */
     @Override
     public int compareTo(Event o) {
-        return Double.compare(this.getEventTime(), o.getEventTime());
+        return Double.compare(this.getTime(), o.getTime());
     }
 }

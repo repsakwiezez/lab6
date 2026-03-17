@@ -4,14 +4,27 @@ import simulator.Event;
 import simulator.EventQueue;
 import simulator.State;
 
+/**
+ * Represents an event where a car arrives at the car wash.
+ */
  class ArriveEvent extends Event { 
     private Car car;
 
+    /**
+     * Creates a new ArriveEvent with the specified time and car.
+     * @param time the time of the event
+     * @param car the car arriving
+     */
     ArriveEvent(double time, Car car) {
         super(time);
         this.car = car;
     }
 
+    /**
+     * Executes the arrive event, handling car arrival logic.
+     * @param s the current state
+     * @param q the event queue
+     */
     @Override
     public void execute(State s, EventQueue q){
         s.setCurrentTime(this.getTime());
@@ -41,6 +54,10 @@ import simulator.State;
         }
     }
 
+    /**
+     * Returns the car associated with this event.
+     * @return the car
+     */
     public Car getCar() {
         return this.car;
     }

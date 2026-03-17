@@ -3,7 +3,14 @@ package carwash;
 import simulator.*;
 import random.*;
 
+/**
+ * Main class for running the car wash simulation.
+ */
 public class Main {
+    /**
+     * The main method that sets up and runs the simulation.
+     * @param args command line arguments (not used)
+     */
     public static void main(String[] args) {
 
         long seed = 1234;

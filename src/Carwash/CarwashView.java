@@ -4,9 +4,22 @@ import simulator.View;
 import simulator.State;
 import simulator.Event;
 
+/**
+ * View class for displaying the car wash simulation state.
+ */
 public class CarwashView extends View {
 
-public CarwashView(CarwashState state, double fastLower, double fastUpper, double slowLower, double slowUpper, double lambda, long seed) {
+    /**
+     * Creates a new CarwashView and prints initial configuration.
+     * @param state the carwash state
+     * @param fastLower lower bound for fast wash time
+     * @param fastUpper upper bound for fast wash time
+     * @param slowLower lower bound for slow wash time
+     * @param slowUpper upper bound for slow wash time
+     * @param lambda lambda for exponential arrival
+     * @param seed the random seed
+     */
+    public CarwashView(CarwashState state, double fastLower, double fastUpper, double slowLower, double slowUpper, double lambda, long seed) {
         System.out.println("Fast machines: " + state.getAvailableFastWash());
         System.out.println("Slow machines: " + state.getAvailableSlowWash());
         System.out.println("Fast distribution: (" + fastLower + ", " + fastUpper + ")");
@@ -18,6 +31,11 @@ public CarwashView(CarwashState state, double fastLower, double fastUpper, doubl
         System.out.println(" Time  Event   Id  Fast  Slow  IdleTime  QueueTime  QueueSize  Rejected");
     }
 
+    /**
+     * Updates the view by printing the current state for the given event.
+     * @param s the state
+     * @param e the event
+     */
     @Override
     public void update(State s, Event e) {
         CarwashState state = (CarwashState) s;

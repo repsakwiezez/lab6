@@ -1,18 +1,15 @@
 package simulator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Base class for simulation states, managing time and observers.
  */
 public class State {
-    
+
     private double currentTime;
 
     private boolean stopFlag;
 
-    private final List<View> views;
+    private View view;
 
     /**
      * Creates a new State with initial time 0 and stop flag false.
@@ -20,7 +17,7 @@ public class State {
     public State() {
         this.currentTime = 0.0;
         this.stopFlag = false;
-        this.views = new ArrayList<>();
+        this.view = null;
     }
 
     /**
@@ -59,22 +56,20 @@ public class State {
     }
 
     /**
-     * Adds a view to be notified of state changes.
+     * Adds a view to be notified of state changes (single observer).
      * @param view the view to add
      */
     public void addView(View view) {
-        if (view != null) {
-            this.views.add(view);
-        }
+        this.view = view;
     }
 
     /**
-     * Notifies all views of an event.
+     * Notifies the registered view of an event.
      * @param e the event
      */
     public void notifyObservers(Event e) {
-        for (View view : views) {
-            view.update(this, e);
+        if (this.view != null) {
+            this.view.update(this, e);
         }
     }
 }
